@@ -16,9 +16,7 @@
             <asp:Button runat="server" ID="btnIP" OnClick="btnIP_Click" Text="Ping IP" />
 
         </div>
-    </form>
 
-    <form id="form2" runat="server">
         <div>
             <div>User:</div>
             <asp:TextBox runat="server" ID="txtUser"></asp:TextBox>
@@ -28,5 +26,6 @@
 
         </div>
     </form>
+
 </body>
 </html>
