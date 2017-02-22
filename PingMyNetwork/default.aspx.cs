@@ -51,12 +51,9 @@ namespace PingMyNetwork
 
             NetworkScan a = new NetworkScan();
             string myIP = a.GetIPAddress();
-            do
-            {
-                myIP = myIP.Substring(0, myIP.Length - 1);
-            } while ((myIP.Substring(myIP.Length - 1, 1) != "."));
-
-
+            myIP = "192.168.1.26";
+            string[] l = myIP.Split('.');
+            myIP = string.Format("{0}.{1}.{2}.", l[0], l[1], l[2]);
 
             for (int i = 0; i < 20; i++)
             {
@@ -64,11 +61,14 @@ namespace PingMyNetwork
                 {
                     if (a.PingNetwork(myIP + i))
                     {
-                        string btn = "<input type='submit' name='btntest" + i + "' value='HOLA' id='btntest" + i + "' runat='server' OnClick='btnIP_Click'>";
 
+                        string h = a.CheckHostname(myIP + i);
+                        if (h == "")
+                        {
+                            h = "NOT PC";
+                        }
                         listaIPS.Add(myIP + i);
-                        sb.AppendFormat("<tr><td>{0}</td><td>{1}</td></tr>", myIP + i, btn);
-
+                        sb.AppendFormat("<tr><td>{0}</td><td>{1}</td></tr>", myIP + i, h);
                     }
                 }
                 catch (Exception)

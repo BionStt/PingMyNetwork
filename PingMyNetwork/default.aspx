@@ -14,7 +14,6 @@
             <asp:TextBox runat="server" ID="txtIP"></asp:TextBox>
             <asp:Label runat="server" ID="lblIP"></asp:Label>
             <asp:Button runat="server" ID="btnIP" OnClick="btnIP_Click" Text="Ping IP" />
-
         </div>
 
         <div>
@@ -23,12 +22,9 @@
             <div>App:</div>
             <asp:TextBox runat="server" ID="txtApp"></asp:TextBox>
             <asp:Button runat="server" ID="Button2" OnClick="btnPushover_Click" Text="Send Push" />
-
         </div>
 
         <div>
-
-
             <asp:Button runat="server" ID="btntest" OnClick="btntest_Click" Text="Check Network" />
             <div runat="server" id="divtest"></div>
         </div>

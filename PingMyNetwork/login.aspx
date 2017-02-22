@@ -29,27 +29,25 @@
                             <asp:TextBox ID="txtbox_password" TextMode="Password" runat="server" Value="" ReadOnly="true" Enabled="false" />
                         </li>
 
-                        <div class="submit two" style="margin-left: 10%;">
+                        <div class="submit two btnMarginLeft mediaBtnMarginTop">
                             <asp:Button CssClass="submit two" runat="server" ID="Button1" OnClick="Button1_Click" Text="1" />
                         </div>
-                        <div class="submit two">
+                        <div class="submit two mediaBtnMarginTop">
                             <asp:Button CssClass="submit two" runat="server" ID="Button2" OnClick="Button1_Click" Text="2" />
                         </div>
-                        <div class="submit two">
+                        <div class="submit two mediaBtnMarginTop">
                             <asp:Button CssClass="submit two" runat="server" ID="Button3" OnClick="Button1_Click" Text="3" />
                         </div>
-                        <div class="submit two" style="margin-left: 10%;">
+                        <div class="submit two btnMarginLeft">
                             <asp:Button CssClass="submit two" runat="server" ID="Button4" OnClick="Button1_Click" Text="4" />
                         </div>
                         <div class="submit two">
                             <asp:Button CssClass="submit two" runat="server" ID="Button5" OnClick="Button1_Click" Text="5" />
                         </div>
-
-
                         <div class="submit two">
                             <asp:Button CssClass="submit two" runat="server" ID="Button6" OnClick="Button1_Click" Text="6" />
                         </div>
-                        <div class="submit two" style="margin-left: 10%;">
+                        <div class="submit two btnMarginLeft">
                             <asp:Button CssClass="submit two" runat="server" ID="Button7" OnClick="Button1_Click" Text="7" />
                         </div>
                         <div class="submit two">
@@ -58,7 +56,7 @@
                         <div class="submit two">
                             <asp:Button CssClass="submit two" runat="server" ID="Button9" OnClick="Button1_Click" Text="9" />
                         </div>
-                        <div class="submit two" style="margin-left: 10%;">
+                        <div class="submit two btnMarginLeft">
                             <asp:Button CssClass="submit two material-icons" runat="server" ID="Button_remove" OnClick="Button_remove_Click" Text="backspace" />
                         </div>
                         <div class="submit two">
