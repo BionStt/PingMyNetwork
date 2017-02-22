@@ -7,13 +7,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <link href="assets/css/login/style.css" rel='stylesheet' type='text/css' />
+    <link href="assets/css/anim/animate.css" rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic' rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <title></title>
 </head>
 <body>
 
-    <div class="login-02">
+    <div class="login-02 animated fadeIn">
         <div class="two-login  hvr-float-shadow">
             <div class="two-login-head">
                 <img src="assets/images/login/top-note.png" alt="" />
@@ -24,7 +25,7 @@
                 </asp:ScriptManager>
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
-                        <li>
+                        <li runat="server" id="lipw">
                             <asp:TextBox ID="txtbox_password" TextMode="Password" runat="server" Value="" ReadOnly="true" Enabled="false" />
                         </li>
 
@@ -46,7 +47,7 @@
 
 
                         <div class="submit two">
-                            <asp:Button CssClass="submit two" runat="server" ID="Button6" OnClick="Button1_Click" Text="5" />
+                            <asp:Button CssClass="submit two" runat="server" ID="Button6" OnClick="Button1_Click" Text="6" />
                         </div>
                         <div class="submit two" style="margin-left: 10%;">
                             <asp:Button CssClass="submit two" runat="server" ID="Button7" OnClick="Button1_Click" Text="7" />
