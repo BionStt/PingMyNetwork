@@ -25,6 +25,14 @@
             <asp:Button runat="server" ID="Button2" OnClick="btnPushover_Click" Text="Send Push" />
 
         </div>
+
+        <div>
+
+
+            <asp:Button runat="server" ID="btntest" OnClick="btntest_Click" Text="Check Network" />
+            <div runat="server" id="divtest"></div>
+        </div>
+
     </form>
 
 </body>

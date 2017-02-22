@@ -10,8 +10,28 @@ namespace BS
 {
     public class NetworkScan
     {
+
         public NetworkScan()
         {
+        }
+
+        /// <summary>
+        /// Get current IP address
+        /// </summary>
+        /// <returns></returns>
+        public string GetIPAddress()
+        {
+            System.Net.IPHostEntry host;
+            string localIP = "?";
+            host = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
+            foreach (System.Net.IPAddress ip in host.AddressList)
+            {
+                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    localIP = ip.ToString();
+                }
+            }
+            return localIP;
         }
 
         /// <summary>
