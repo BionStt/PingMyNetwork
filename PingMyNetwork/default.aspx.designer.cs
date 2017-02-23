@@ -22,75 +22,93 @@ namespace PingMyNetwork {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control txtIP.
+        /// Control sm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIP;
+        protected global::System.Web.UI.ScriptManager sm;
         
         /// <summary>
-        /// Control lblIP.
+        /// Control ipaddress.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIP;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText ipaddress;
         
         /// <summary>
-        /// Control btnIP.
+        /// Control lbl_ipaddress.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIP;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_ipaddress;
         
         /// <summary>
-        /// Control txtUser.
+        /// Control btnTestIp.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUser;
+        protected global::System.Web.UI.WebControls.Button btnTestIp;
         
         /// <summary>
-        /// Control txtApp.
+        /// Control hostname.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApp;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText hostname;
         
         /// <summary>
-        /// Control Button2.
+        /// Control lbl_hostname.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_hostname;
         
         /// <summary>
-        /// Control btntest.
+        /// Control btnGetHostnameByIP.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btntest;
+        protected global::System.Web.UI.WebControls.Button btnGetHostnameByIP;
         
         /// <summary>
-        /// Control divtest.
+        /// Control macaddress.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divtest;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText macaddress;
+        
+        /// <summary>
+        /// Control lbl_macaddress.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_macaddress;
+        
+        /// <summary>
+        /// Control btnGetMACByIP.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGetMACByIP;
     }
 }

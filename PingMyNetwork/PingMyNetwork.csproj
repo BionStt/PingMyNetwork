@@ -67,9 +67,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\anim\animate.css" />
+    <Content Include="assets\css\default\form\form_style.css" />
     <Content Include="assets\css\login\style.css" />
     <Content Include="assets\css\materialize.css" />
     <Content Include="assets\css\materialize.min.css" />
+    <Content Include="assets\images\default\form\logos\apple.png" />
+    <Content Include="assets\images\default\form\logos\linux.png" />
+    <Content Include="assets\images\default\form\logos\other.png" />
+    <Content Include="assets\images\default\form\logos\phone.png" />
+    <Content Include="assets\images\default\form\logos\windows.png" />
     <Content Include="assets\images\login\icon.png" />
     <Content Include="assets\images\login\icon2.png" />
     <Content Include="assets\images\login\mail.png" />
