@@ -50,7 +50,7 @@
                         <%-- SELECT DEVICE --%>
                         <div style="width: 102%; z-index: 99999" class="input-field col s12 tooltipped" data-position="left" data-delay="50" data-tooltip="Select host device">
                             <select runat="server" id="select_device" class="icons" style="vertical-align: top;">
-                                <option value="" disabled selected>Select device</option>
+                                <option value="" >Select device</option>
                                 <option value="Desktop" data-icon="assets/images/default/form/logos/pc.png">Desktop PC</option>
                                 <option value="Server" data-icon="assets/images/default/form/logos/mac.png">Server</option>
                                 <option value="Smartphone" data-icon="assets/images/default/form/logos/android.png">Smartphone</option>

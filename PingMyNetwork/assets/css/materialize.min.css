@@ -4941,7 +4941,7 @@ button.btn-floating {
 
             .fixed-action-btn.horizontal ul li {
                 display: inline-block;
-                margin: 15px 15px 0 0
+                margin: 10px 15px 0 0 !important
             }
 
     .fixed-action-btn.toolbar {
