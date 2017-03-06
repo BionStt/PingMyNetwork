@@ -175,24 +175,6 @@ namespace PingMyNetwork {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl CheckNetworkContainer;
         
         /// <summary>
-        /// Control select_hostscannetwork.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect select_hostscannetwork;
-        
-        /// <summary>
-        /// Control refreshselect.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton refreshselect;
-        
-        /// <summary>
         /// Control linkbtn_ScanNetwork.
         /// </summary>
         /// <remarks>
@@ -218,6 +200,33 @@ namespace PingMyNetwork {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton linkbtn_CloseCheckNetworkPanel;
+        
+        /// <summary>
+        /// Control dropdown_hostscannetwork.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropdown_hostscannetwork;
+        
+        /// <summary>
+        /// Control refreshselect.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton refreshselect;
+        
+        /// <summary>
+        /// Control linkbtnCloseDeleteHost.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton linkbtnCloseDeleteHost;
         
         /// <summary>
         /// Control txtBox_UserPushover.

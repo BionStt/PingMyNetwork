@@ -22,12 +22,12 @@ namespace PingMyNetwork
             if (!IsPostBack)
             {
                 //SetMyselfCheckNetwork();
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('There are " + CheckOnlineHosts().ToString() + " out of " + MainListHosts.Count + " devices online.', 2000)});", true);
 
-
+                LoadPushoverConfiguration();
             }
             /// Asign values in the page load
-            LoadPushoverConfiguration();
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('There are " + CheckOnlineHosts().ToString() + " out of " + MainListHosts.Count + " devices online.', 2000)});", true);
+            dropdown_hostscannetwork.Visible = false;
 
             // Fill main host list
 
@@ -48,9 +48,20 @@ namespace PingMyNetwork
         private void LoadPushoverConfiguration()
         {
             ///Get Pushover User from SERVER << TODO
-            txtBox_UserPushover.Text = "u7mqewhsxe5rh6yr4ddbweunuv96t4";
+            //txtBox_UserPushover.Text = "u7mqewhsxe5rh6yr4ddbweunuv96t4";
+            List<String> pushoverconfig = new Push().GetPushoverConfiguration();
+            try
+            {
+                txtBox_UserPushover.Text = pushoverconfig[0];
+                txtBox_TokenPushover.Text = pushoverconfig[1];
+            }
+            catch (Exception)
+            {
+
+            }
+
             ///Get Pushover Token from SERVER << TODO
-            txtBox_TokenPushover.Text = "ap7n7r56xkuttprqi2yyvzuzebcp4w";
+
 
             if (txtBox_UserPushover.Text != "")
             {
@@ -470,6 +481,9 @@ namespace PingMyNetwork
 
         protected void btn_SaveSettingsPushover_Click(object sender, EventArgs e)
         {
+
+
+            new Push().SavePushoverConfiguration(txtBox_UserPushover.Text, txtBox_TokenPushover.Text);
             ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Pushover settings has been updated!', 2000)});", true);
 
         }
@@ -566,7 +580,7 @@ namespace PingMyNetwork
 
             for (int i = 0; i < ScanNetworkListHosts.Count; i++)
             {
-                sb.AppendFormat("<li class=\"collection-item avatar\" style=\"width: 100% !important;float: none !important;\">");
+                sb.AppendFormat("<li class=\"collection-item avatar\" style=\"width: 100% !important;float: none !important;margin-left: 0px !important;\">");
                 sb.AppendFormat("<i style=\"margin-top: 10px;\" style=\" color: white\" class=\"material-icons circle green\">devices_other</i>");
                 sb.AppendFormat("<span class=\"title\">Hostname: {0}</span>", ScanNetworkListHosts[i].hostname);
                 sb.AppendFormat("<p>");
@@ -578,28 +592,10 @@ namespace PingMyNetwork
             }
             sb.Append("</ul>");
             CheckNetworkContainer.InnerHtml = sb.ToString();
-            GenerateSelectionScanNetwork(ScanNetworkListHosts);
             ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Network scan finished!', 4000)});", true);
 
         }
 
-        private void GenerateSelectionScanNetwork(List<Hosts.host> list)
-        {
-
-            if (list.Count == 0)
-            {
-                list = new Hosts().FillListWithHost();
-            }
-
-            foreach (Hosts.host host in list)
-            {
-                ListItem nhost = new ListItem(host.ip, host.ip);
-                select_hostscannetwork.Items.Add(nhost);
-            }
-
-
-            //select_device.Items.Add()
-        }
 
         /// <summary>
         /// Method that gets your IP-HOSTNAME-MAC ADDRESS and retrieve a list in html
@@ -644,8 +640,25 @@ namespace PingMyNetwork
 
         protected void refreshselect_Click(object sender, EventArgs e)
         {
-            GenerateSelectionScanNetwork(ScanNetworkListHosts);
-            select_hostscannetwork.Style.Add("display", "initial");
+            foreach (Hosts.host host in MainListHosts)
+            {
+                ListItem newhost = new ListItem(host.ip, host.ip);
+
+
+               
+                    if (dropdown_hostscannetwork.Items.Contains(newhost))
+                    {
+
+                    }
+                    else
+                    {
+                        dropdown_hostscannetwork.Items.Add(newhost);
+                    }
+                
+
+            }
+            dropdown_hostscannetwork.Visible = true;
+            dropdown_hostscannetwork.Style.Add("display", "initial");
         }
     }
 }

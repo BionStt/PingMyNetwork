@@ -7,9 +7,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic' rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" />
     <link href="assets/css/anim/animate.css" rel='stylesheet' type='text/css' />
     <link href="assets/css/default/form/form_style.css" rel='stylesheet' type='text/css' />
-    <link href="assets/css/materialize.min.css" rel='stylesheet' type='text/css' />
+    <%--<link href="assets/css/materialize.min.css" rel='stylesheet' type='text/css' />--%>
 
 
     <title>Ping My Network</title>
@@ -169,7 +170,7 @@
             </div>
 
             <!-- MODAL - CHECK NETWORK -->
-            <div id="modalCheckNetwork" class="modal" style="overflow: hidden !important;">
+            <div id="modalCheckNetwork" class="modal">
                 <div class="modal-content">
                     <h4 style="text-align: center">Scan Netowk</h4>
                     <br />
@@ -181,14 +182,13 @@
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <div runat="server" id="CheckNetworkContainer"></div>
-                               <%-- <div style="width: 100%; z-index: 99999" class="input-field col s8 m6 tooltipped" data-position="left" data-delay="50" data-tooltip="Select host to add">
+                                <%-- <div style="width: 100%; z-index: 99999" class="input-field col s8 m6 tooltipped" data-position="left" data-delay="50" data-tooltip="Select host to add">
                                     
                                 </div>
                                 <div class="input-field col s4 m6">
-
                                 </div>--%>
 
-                                <div class="input-field col s12 m6">
+                                <%-- <div class="input-field col s12 m6">
                                     <select runat="server" id="select_hostscannetwork" style="vertical-align: top;">
                                         <option value="" disabled selected>Select host</option>
                                     </select>
@@ -196,14 +196,13 @@
                                 <div class="input-field col s12 m6">
                                     
                                     <asp:LinkButton runat="server" CssClass="btn waves-effect waves-light btnTestIp" ID="refreshselect" OnClick="refreshselect_Click" Text="REFRESH SELECT"></asp:LinkButton>
-                                </div>
-
+                                </div>--%>
                             </ContentTemplate>
                             <Triggers>
                                 <asp:AsyncPostBackTrigger ControlID="linkbtn_ScanNetwork" />
                                 <asp:AsyncPostBackTrigger ControlID="linkbtn_ClearScan" />
                                 <asp:AsyncPostBackTrigger ControlID="linkbtn_CloseCheckNetworkPanel" />
-                                <asp:AsyncPostBackTrigger ControlID="refreshselect" />
+                                <%--<asp:AsyncPostBackTrigger ControlID="refreshselect" />--%>
                             </Triggers>
                         </asp:UpdatePanel>
                     </div>
@@ -219,6 +218,47 @@
 
                 <div class="modal-footer">
                     <asp:LinkButton runat="server" CssClass="modal-action modal-close waves-effect waves-green btn-flat" ID="linkbtn_CloseCheckNetworkPanel" Text="CLOSE"></asp:LinkButton>
+                </div>
+            </div>
+
+            <!-- MODAL - DELETE HOST-->
+            <div id="modalDeleteHost" class="modal">
+                <div class="modal-content">
+                    <h4 style="text-align: center">Delete host</h4>
+                    <br />
+
+                    <div class="container">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+
+                                <%--<div style="width: 100%; z-index: 99999" class="input-field col s8 m6 tooltipped" data-position="left" data-delay="50" data-tooltip="Select host to add">
+                                    
+                                </div>
+                                <div class="input-field col s4 m6">
+                                </div>--%>
+
+                                <div class="input-field col s12 m6">
+                                    <asp:DropDownList runat="server" ID="dropdown_hostscannetwork" ViewStateMode="Enabled"></asp:DropDownList>
+                                    <%--<select runat="server" id="select_hostscannetwork" style="vertical-align: top;">
+                                        <option value="" disabled selected>Select host</option>
+                                    </select>--%>
+                                </div>
+
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="refreshselect" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                        <div class="input-field col s12 m6">
+
+                            <asp:LinkButton runat="server" CssClass="btn waves-effect waves-light btnTestIp" ID="refreshselect" OnClick="refreshselect_Click" Text="REFRESH SELECT"></asp:LinkButton>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <asp:LinkButton runat="server" CssClass="modal-action modal-close waves-effect waves-green btn-flat" ID="linkbtnCloseDeleteHost" Text="CLOSE"></asp:LinkButton>
                 </div>
             </div>
 
@@ -242,14 +282,14 @@
                                             <ContentTemplate>
                                                 <div class="input-field col s12">
                                                     <div class="tooltipped" data-position="top" data-delay="50" data-tooltip="User example: uQiRzpo4DXghDmr9QzzfQu27cmVRsG">
-                                                        <asp:TextBox runat="server" ID="txtBox_UserPushover"></asp:TextBox>
+                                                        <asp:TextBox runat="server" ID="txtBox_UserPushover" EnableViewState="true"></asp:TextBox>
                                                         <asp:Label runat="server" AssociatedControlID="txtBox_UserPushover" ID="lbl_UserPushover" Text="Pushover user"></asp:Label>
                                                     </div>
                                                 </div>
 
                                                 <div class="input-field col s12">
                                                     <div class="tooltipped" data-position="top" data-delay="50" data-tooltip="Token example: KzGDORePKggMaC0QOYAMyEEuzJnyUi">
-                                                        <asp:TextBox runat="server" ID="txtBox_TokenPushover"></asp:TextBox>
+                                                        <asp:TextBox runat="server" ID="txtBox_TokenPushover" EnableViewState="true"></asp:TextBox>
                                                         <asp:Label runat="server" AssociatedControlID="txtBox_TokenPushover" ID="lbl_TokenPushover" Text="API/Token"></asp:Label>
                                                     </div>
                                                 </div>
@@ -470,6 +510,7 @@
                     <li><a class="btn-floating red tooltipped" data-position="top" data-delay="50" data-tooltip="Settings" href="#modalSettings"><i class="material-icons">settings</i></a></li>
                     <li><a class="btn-floating yellow darken-1 tooltipped" data-position="top" data-delay="50" data-tooltip="Notifications" href="#modalNotifications"><i class="material-icons">notifications</i></a></li>
                     <li><a class="btn-floating green tooltipped" data-position="top" data-delay="50" data-tooltip="Scan network" href="#modalCheckNetwork"><i class="material-icons">sync</i></a></li>
+                    <li><a class="btn-floating red tooltipped" data-position="top" data-delay="50" data-tooltip="Delete host" href="#modalDeleteHost"><i class="material-icons">clear</i></a></li>
                     <li><a class="btn-floating bluemodal-trigger tooltipped" data-position="top" data-delay="50" data-tooltip="Add host" href="#moalFormNewNodo"><i class="material-icons">add_box</i></a></li>
                 </ul>
             </div>
@@ -484,18 +525,15 @@
             $('.collapsible').collapsible();
             $('select').material_select();
             $('.tooltipped').tooltip({ delay: 50 });
-
         });
-
         //Starting modals
         $(document).ready(function () {
             $('#modalSettings').modal();
             $('#modalCheckNetwork').modal();
             $('#modalNotifications').modal();
+            $('#modalDeleteHost').modal();
             $('#moalFormNewNodo').modal();
         });
-
-
     </script>
 
 
