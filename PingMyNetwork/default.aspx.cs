@@ -21,12 +21,9 @@ namespace PingMyNetwork
 
             if (!IsPostBack)
             {
-                //SetMyselfCheckNetwork();
 
                 LoadPushoverConfiguration();
             }
-            /// Asign values in the page load
-            dropdown_hostscannetwork.Visible = false;
 
             // Fill main host list
 
@@ -637,6 +634,7 @@ namespace PingMyNetwork
 
         #endregion
 
+        #region DELETE HOST
         protected void refreshselect_Click(object sender, EventArgs e)
         {
             foreach (Hosts.host host in MainListHosts)
@@ -644,21 +642,22 @@ namespace PingMyNetwork
                 ListItem newhost = new ListItem(host.ip, host.ip);
 
 
-               
-                    if (dropdown_hostscannetwork.Items.Contains(newhost))
-                    {
 
-                    }
-                    else
-                    {
-                        dropdown_hostscannetwork.Items.Add(newhost);
-                    }
-                
+                if (dropdown_hostscannetwork.Items.Contains(newhost))
+                {
+
+                }
+                else
+                {
+                    dropdown_hostscannetwork.Items.Add(newhost);
+                }
+
 
             }
             dropdown_hostscannetwork.Visible = true;
             dropdown_hostscannetwork.Style.Add("display", "initial");
         }
+
 
         protected void deletehost_Click(object sender, EventArgs e)
         {
@@ -668,5 +667,6 @@ namespace PingMyNetwork
             ScriptManager.RegisterStartupScript(this, typeof(Page), "ReloadHostList", "$( '#mainHostList' ).load( 'default.aspx #mainHostList' );", true);
 
         }
+        #endregion
     }
 }
