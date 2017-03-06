@@ -26,7 +26,6 @@ namespace PingMyNetwork
                 LoadPushoverConfiguration();
             }
             /// Asign values in the page load
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('There are " + CheckOnlineHosts().ToString() + " out of " + MainListHosts.Count + " devices online.', 2000)});", true);
             dropdown_hostscannetwork.Visible = false;
 
             // Fill main host list
@@ -659,6 +658,15 @@ namespace PingMyNetwork
             }
             dropdown_hostscannetwork.Visible = true;
             dropdown_hostscannetwork.Style.Add("display", "initial");
+        }
+
+        protected void deletehost_Click(object sender, EventArgs e)
+        {
+            new Hosts().DeleteHost(dropdown_hostscannetwork.SelectedValue);
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Host successfully deleted!', 2000)});", true);
+            GenerateMainHostList();
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "ReloadHostList", "$( '#mainHostList' ).load( 'default.aspx #mainHostList' );", true);
+
         }
     }
 }

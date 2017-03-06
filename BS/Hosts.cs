@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -189,6 +190,75 @@ namespace BS
             l2.Add(tipo.cadena);
             l2.Add(tipo.cadena);
             l2.Add(tipo.cadena);
+
+        }
+
+        /// <summary>
+        /// Add a host to the main host list and inserts into database
+        /// </summary>
+        /// <param name="ip">IP</param>
+        /// <param name="hostname">Hostname</param>
+        /// <param name="mac">MAC</param>
+        public void DeleteHost(string ip)
+        {
+
+            SetListas();
+
+            List<host> newListHost = new List<host>();
+
+            newListHost = GetHostFromDataBase();
+
+            foreach (host host in newListHost)
+            {
+                if (host.ip == ip)
+                {
+                    newListHost.Remove(host);
+                    break;
+                }
+            }
+
+            
+            try
+            {
+                if (File.Exists(@"C:\pingmynetwork\hosts.txt"))
+                {
+                    File.Delete(@"C:\pingmynetwork\hosts.txt");
+
+                }
+                fichero_hosts = new Fichero(@"C:\pingmynetwork\hosts.txt", l1, l2);
+            }
+            catch (Exception e1)
+            {
+                return;
+            }
+            //Guardando los datos
+            try
+            {
+                if (fichero_hosts.abre())
+                {
+                    fichero_hosts.fin();
+
+                    foreach (host host in newListHost)
+                    {
+                        nhosts.Add(host.ip);
+                        nhosts.Add(host.hostname);
+                        nhosts.Add(host.mac);
+                        nhosts.Add(host.device);
+                        fichero_hosts.escribe(nhosts);
+                        nhosts.Clear();
+                    }
+
+                }
+            }
+            catch (Exception e1)
+            {
+                //MessageBox.Show(e1.Message);
+            }
+            finally
+            {
+                fichero_hosts.cierra();
+            }
+
 
         }
     }

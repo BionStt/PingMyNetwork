@@ -38,21 +38,6 @@
             <%-- HOST  --%>
             <div class="container">
                 <div runat="server" id="mainHostList">
-                    <%--<ul class="collection">
-                        <li class="collection-item avatar">
-                            <img src="images/yuna.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>
-                                First Line
-                                <br>
-                                Second Line
-                            </p>
-                            <div class="secondary-content ">
-                                <a class="btn-floating btn-large waves-effect waves-light green" runat="server" onServerClick="linkbtnHeaderRefresh_Click"><i class="material-icons">replay</i></a>
-                                <a class="btn-floating btn-large waves-effect waves-light red" runat="server" onServerClick="linkbtnHeaderRefresh_Click"><i class="material-icons">clear</i></a>
-                            </div>
-                        </li>
-                    </ul>--%>
                 </div>
             </div>
 
@@ -247,11 +232,13 @@
                             </ContentTemplate>
                             <Triggers>
                                 <asp:AsyncPostBackTrigger ControlID="refreshselect" />
+                                <asp:AsyncPostBackTrigger ControlID="deletehost" />
                             </Triggers>
                         </asp:UpdatePanel>
-                        <div class="input-field col s12 m6">
+                        <div class="input-field col s12 m6" style="text-align:center;">
 
                             <asp:LinkButton runat="server" CssClass="btn waves-effect waves-light btnTestIp" ID="refreshselect" OnClick="refreshselect_Click" Text="REFRESH SELECT"></asp:LinkButton>
+                            <asp:LinkButton runat="server" CssClass="btn waves-effect waves-light btnTestIp modal-close red" ID="deletehost" OnClick="deletehost_Click" Text="DELETE HOST"></asp:LinkButton>
                         </div>
                     </div>
 
