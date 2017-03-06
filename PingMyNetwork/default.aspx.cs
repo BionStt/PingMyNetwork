@@ -13,16 +13,14 @@ namespace PingMyNetwork
     {
         List<Hosts.host> ScanNetworkListHosts = new List<Hosts.host>();
         List<Hosts.host> MainListHosts = new List<Hosts.host>();
-
-
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            dropdown_hostscannetwork.Visible = false;
             if (!IsPostBack)
             {
+                
 
-                LoadPushoverConfiguration();
             }
 
             // Fill main host list
@@ -33,45 +31,10 @@ namespace PingMyNetwork
                 GenerateMainHostList();
             }
         }
-
-
-
+        
         #region VARIABLE VALUES 
 
-        /// <summary>
-        /// Method that assign values to Pushover configuration
-        /// </summary>
-        private void LoadPushoverConfiguration()
-        {
-            ///Get Pushover User from SERVER << TODO
-            //txtBox_UserPushover.Text = "u7mqewhsxe5rh6yr4ddbweunuv96t4";
-            List<String> pushoverconfig = new Push().GetPushoverConfiguration();
-            try
-            {
-                txtBox_UserPushover.Text = pushoverconfig[0];
-                txtBox_TokenPushover.Text = pushoverconfig[1];
-            }
-            catch (Exception)
-            {
 
-            }
-
-            ///Get Pushover Token from SERVER << TODO
-
-
-            if (txtBox_UserPushover.Text != "")
-            {
-                ToggleActiveLabel(1, lbl_UserPushover);
-                ToggleActiveTextBox(1, txtBox_UserPushover);
-            }
-            if (txtBox_TokenPushover.Text != "")
-            {
-                ToggleActiveLabel(1, lbl_TokenPushover);
-                ToggleActiveTextBox(1, txtBox_TokenPushover);
-            }
-            ///Get Pushover Notification Configuration from SERVER << TODO
-            chkbox_ScheduledNotifications.Checked = true;
-        }
 
         #endregion
 
@@ -116,8 +79,6 @@ namespace PingMyNetwork
 
         protected void linkbtnHeaderRefresh_Click(object sender, EventArgs e)
         {
-            string TextToPush = "There are " + CheckOnlineHosts().ToString() + " out of " + MainListHosts.Count + " devices online.";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('There are " + CheckOnlineHosts().ToString() + " out of " + MainListHosts.Count + " devices online.', 2000)});", true);
 
         }
 
@@ -439,123 +400,6 @@ namespace PingMyNetwork
         {
             RestartValuesNewHostForm();
         }
-
-        #endregion
-
-        #region NOTIFICATION SETTINGS - ACCOUNT CONFIGURATION
-
-        protected void btn_SendTestPushover_Click(object sender, EventArgs e)
-        {
-            if (txtBox_UserPushover.Text == "")
-            {
-                ToggleActiveTextBox(2, txtBox_UserPushover);
-            }
-            else
-            {
-                ToggleActiveTextBox(1, txtBox_UserPushover);
-            }
-            if (txtBox_TokenPushover.Text == "")
-            {
-                ToggleActiveTextBox(2, txtBox_TokenPushover);
-            }
-            else
-            {
-                ToggleActiveTextBox(1, txtBox_TokenPushover);
-            }
-            if (txtBox_UserPushover.Text != "" && txtBox_TokenPushover.Text != "")
-            {
-                //string onlinehosts = CheckOnlineHosts().ToString();
-                string TextToPush = "There are " + CheckOnlineHosts().ToString() + " out of " + MainListHosts.Count + " devices online.";
-
-                Push p = new Push(txtBox_TokenPushover.Text, txtBox_UserPushover.Text, TextToPush);
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Push message has been sent!', 2000)});", true);
-
-                ActiveLabelsPushoverAccount();
-
-            }
-        }
-
-        protected void btn_SaveSettingsPushover_Click(object sender, EventArgs e)
-        {
-
-
-            new Push().SavePushoverConfiguration(txtBox_UserPushover.Text, txtBox_TokenPushover.Text);
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Pushover settings has been updated!', 2000)});", true);
-
-        }
-
-        /// <summary>
-        /// Add active class when there is something in the textbox
-        /// </summary>
-        private void ActiveLabelsPushoverAccount()
-        {
-            if (lbl_UserPushover.Text != "")
-            {
-                ToggleActiveLabel(1, lbl_UserPushover);
-            }
-            if (lbl_TokenPushover.Text != "")
-            {
-                ToggleActiveLabel(1, lbl_TokenPushover);
-            }
-        }
-
-
-        protected void btn_UpdatePassword_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private int CheckOnlineHosts()
-        {
-            int res = 0;
-            NetworkScan a = new NetworkScan();
-
-            foreach (Hosts.host host in MainListHosts)
-            {
-
-                if (a.PingNetwork(host.ip))
-                {
-                    res++;
-                }
-
-            }
-
-            return res;
-
-        }
-
-        #endregion
-
-        #region NOTIFICATION SETTINGS - SCHEDULED NOTIFICATIONS
-
-        protected void btn_SaveSettingsScheduledNotifications_Click(object sender, EventArgs e)
-        {
-            if (true)
-            {
-
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Pushover settings has been updated!', 2000)});", true);
-            }
-
-
-        }
-
-        /// <summary>
-        /// Method that send a scheduled notification push with account configuration user and token
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void btn_SendTestScheduledNotificationPushover_Click(object sender, EventArgs e)
-        {
-            if (txtBox_UserPushover.Text != "" && txtBox_TokenPushover.Text != "")
-            {
-                Push p = new Push(txtBox_TokenPushover.Text, txtBox_UserPushover.Text, "This is a scheduled notification push from PingMyNetwork!");
-
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Push message has been sent!', 2000)});", true);
-                ActiveLabelsPushoverAccount();
-
-            }
-        }
-
 
         #endregion
 

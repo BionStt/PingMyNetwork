@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Win32.TaskScheduler;
 
 namespace BS
 {
@@ -217,7 +218,7 @@ namespace BS
                 }
             }
 
-            
+
             try
             {
                 if (File.Exists(@"C:\pingmynetwork\hosts.txt"))
@@ -258,8 +259,6 @@ namespace BS
             {
                 fichero_hosts.cierra();
             }
-
-
         }
     }
 }

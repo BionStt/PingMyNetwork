@@ -2811,7 +2811,6 @@ td, th {
         padding: 10px 20px;
         margin: 0;
         border-bottom: 1px solid #e0e0e0
-
     }
 
         .collection .collection-item.avatar {
@@ -4844,7 +4843,6 @@ small {
     background-color: #26a69a;
     text-align: center;
     letter-spacing: .5px;
-    min-width: 140px !important;
     transition: .2s ease-out;
     cursor: pointer
 }
