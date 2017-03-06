@@ -8,3 +8,27 @@
 .btnFormMarginTop {
     margin-top: 10px;
 }
+
+.mainHost {
+    padding: 10px 50px 10px 50px;
+}
+
+.collection {
+    overflow: visible;
+}
+
+.btnForm {
+    min-width: 140px !important;
+}
+
+
+.collection .collection-item.avatar {
+    width: 45% !important;
+    float: left !important;
+    margin-left: 30px !important;
+}
+
+.collectionnetworkscan {
+    width: 100% !important;
+    float: none !important;
+}

@@ -68,27 +68,23 @@
   <ItemGroup>
     <Content Include="assets\css\anim\animate.css" />
     <Content Include="assets\css\default\form\form_style.css" />
-    <Content Include="assets\css\login\style.css" />
     <Content Include="assets\css\materialize.css" />
     <Content Include="assets\css\materialize.min.css" />
-    <Content Include="assets\images\default\form\logos\apple.png" />
+    <Content Include="assets\images\default\form\logos\android.png" />
+    <Content Include="assets\images\default\form\logos\chromecast.png" />
+    <Content Include="assets\images\default\form\logos\console.png" />
+    <Content Include="assets\images\default\form\logos\iphone.png" />
     <Content Include="assets\images\default\form\logos\linux.png" />
+    <Content Include="assets\images\default\form\logos\mac.png" />
     <Content Include="assets\images\default\form\logos\other.png" />
-    <Content Include="assets\images\default\form\logos\phone.png" />
-    <Content Include="assets\images\default\form\logos\windows.png" />
-    <Content Include="assets\images\login\icon.png" />
-    <Content Include="assets\images\login\icon2.png" />
-    <Content Include="assets\images\login\mail.png" />
-    <Content Include="assets\images\login\tick.png" />
-    <Content Include="assets\images\login\tip.png" />
-    <Content Include="assets\images\login\tip2.png" />
-    <Content Include="assets\images\login\tip3.png" />
-    <Content Include="assets\images\login\top-key.png" />
-    <Content Include="assets\images\login\top-lock.png" />
-    <Content Include="assets\images\login\top-note.png" />
+    <Content Include="assets\images\default\form\logos\pc.png" />
+    <Content Include="assets\images\default\form\logos\printer.png" />
+    <Content Include="assets\images\default\form\logos\router.png" />
+    <Content Include="assets\images\default\form\logos\smartwatch.png" />
+    <Content Include="assets\images\default\form\logos\tablet.png" />
+    <Content Include="assets\images\default\form\logos\tv.png" />
     <Content Include="assets\js\materialize.js" />
     <Content Include="assets\js\materialize.min.js" />
-    <Content Include="login.aspx" />
     <Content Include="packages.config" />
     <Content Include="assets\fonts\roboto\Roboto-Bold.eot" />
     <Content Include="assets\fonts\roboto\Roboto-Bold.ttf" />
@@ -128,13 +124,6 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="login.aspx.cs">
-      <DependentUpon>login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="login.aspx.designer.cs">
-      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

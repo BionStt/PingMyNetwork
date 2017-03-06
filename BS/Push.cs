@@ -9,6 +9,18 @@ namespace BS
 {
     public class Push
     {
+        /// <summary>
+        /// Empty constructor
+        /// </summary>
+        public Push()
+        {
+        }
+        /// <summary>
+        /// Constructor that sends a push
+        /// </summary>
+        /// <param name="app">App or token</param>
+        /// <param name="user">User</param>
+        /// <param name="text">Text</param>
         public Push(string app, string user, string text)
         {
             PushByTextEnteringTokenApp(app, user, text);

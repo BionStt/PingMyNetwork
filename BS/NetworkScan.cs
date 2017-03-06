@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.NetworkInformation;
-
+using System.Diagnostics;
 
 namespace BS
 {
@@ -46,6 +46,8 @@ namespace BS
                 using (Ping pingSender = new Ping())
                 {
                     PingReply reply = pingSender.Send(ip, 500);
+
+                    string a = GetIPAddress();
 
                     if (reply.Status == IPStatus.Success)
                     {
@@ -89,6 +91,5 @@ namespace BS
             }
             return hostname;
         }
-
     }
 }
