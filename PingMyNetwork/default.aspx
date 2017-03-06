@@ -8,10 +8,8 @@
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic' rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="assets/css/anim/animate.css" rel='stylesheet' type='text/css' />
-    <%--<link href="assets/css//materialize.min.css" rel='stylesheet' type='text/css' />--%>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" />
     <link href="assets/css/default/form/form_style.css" rel='stylesheet' type='text/css' />
+    <link href="assets/css/materialize.min.css" rel='stylesheet' type='text/css' />
 
 
     <title>Ping My Network</title>
@@ -480,7 +478,7 @@
     </form>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script src="assets/js/materialize.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.collapsible').collapsible();
