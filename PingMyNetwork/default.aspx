@@ -24,8 +24,8 @@
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo">&nbsp;&nbsp; PingMyNetwork</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li>
-                        <asp:LinkButton runat="server" CssClass=" waves-effect waves-light" ID="linkbtnHeaderRefresh" OnClick="linkbtnHeaderRefresh_Click" Text="REFRESH"></asp:LinkButton>
+                    <li id="li-btn-refresh">
+                        <asp:LinkButton runat="server" CssClass=" waves-effect waves-light btn-refresh" ID="linkbtnHeaderRefresh" OnClick="linkbtnHeaderRefresh_Click" Text="REFRESH"></asp:LinkButton>
                     </li>
                 </ul>
             </div>
@@ -38,7 +38,7 @@
         </div>
 
         <%-- MODAL - NEW HOST FORM  --%>
-        <div id="moalFormNewNodo" class="modal" style="overflow: hidden !important;">
+        <div id="moalFormNewNodo" class="modal modal-form" style="overflow: hidden !important;">
             <div class="modal-content" style="padding-bottom: 10px; padding-top: 40px;">
                 <h4 style="text-align: center;">Add new host</h4>
                 <br />
@@ -145,7 +145,7 @@
         </div>
 
         <!-- MODAL - CHECK NETWORK -->
-        <div id="modalCheckNetwork" class="modal">
+        <div id="modalCheckNetwork" class="modal modal-form">
             <div class="modal-content">
                 <h4 style="text-align: center">Network Scan</h4>
                 <br />
@@ -173,7 +173,7 @@
         </div>
 
         <!-- MODAL - DELETE HOST-->
-        <div id="modalDeleteHost" class="modal">
+        <div id="modalDeleteHost" class="modal modal-form">
             <div class="modal-content">
                 <h4 style="text-align: center">Delete host</h4>
                 <br />
@@ -215,13 +215,13 @@
 
         <%-- CIRCLE BUTTON --%>
         <div class="fixed-action-btn horizontal click-to-toggle ">
-            <a class="btn-floating btn-large " style="background-color: #0d47a1; min-width: 50px !important;">
+            <a class="btn-floating btn-large btn-responsive">
                 <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Menu">apps</i>
             </a>
             <ul>
-                <li><a class="btn-floating green tooltipped" data-position="top" data-delay="50" data-tooltip="Network scan" href="#modalCheckNetwork"><i class="material-icons">sync</i></a></li>
-                <li><a class="btn-floating red tooltipped" data-position="top" data-delay="50" data-tooltip="Delete host" href="#modalDeleteHost"><i class="material-icons">clear</i></a></li>
-                <li><a class="btn-floating bluemodal-trigger tooltipped" data-position="top" data-delay="50" data-tooltip="Add host" href="#moalFormNewNodo"><i class="material-icons">add_box</i></a></li>
+                <li><a class="btn-floating btn-responsive-i green tooltipped" data-position="top" data-delay="50" data-tooltip="Network scan" href="#modalCheckNetwork"><i class="material-icons">sync</i></a></li>
+                <li><a class="btn-floating btn-responsive-i red tooltipped" data-position="top" data-delay="50" data-tooltip="Delete host" href="#modalDeleteHost"><i class="material-icons">clear</i></a></li>
+                <li><a class="btn-floating btn-responsive-i bluemodal-trigger tooltipped" data-position="top" data-delay="50" data-tooltip="Add host" href="#moalFormNewNodo"><i class="material-icons">add_box</i></a></li>
             </ul>
         </div>
 
@@ -241,6 +241,8 @@
             $('#modalDeleteHost').modal();
             $('#moalFormNewNodo').modal();
         });
+
+        
     </script>
 
 

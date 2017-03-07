@@ -412,18 +412,18 @@ namespace PingMyNetwork
         /// <param name="e"></param>
         protected void btn_ScanNetwork_Click(object sender, EventArgs e)
         {
-
+            CheckNetworkContainer.InnerHtml = "";
             StringBuilder sb = new StringBuilder();
-            sb.Append("<ul class=\"collection\">");
+            sb.Append("<ul id=\"ulScannetwork\" class=\"collection\">");
 
             ScanNetworkListHosts = new Hosts().FillListWithHost();
 
-            for (int i = 0; i < ScanNetworkListHosts.Count; i++)
+            for ( int i = 0; i < ScanNetworkListHosts.Count; i++)
             {
-                sb.AppendFormat("<li class=\"collection-item avatar\" style=\"width: 100% !important;float: none !important;margin-left: 0px !important;\">");
+                sb.AppendFormat("<li class=\"collection-item avatar colletion-scannetwork\" style=\"width: 100% !important;float: none !important;margin-left: 0px !important;\">");
                 sb.AppendFormat("<i style=\"margin-top: 10px;\" style=\" color: white\" class=\"material-icons circle green\">devices_other</i>");
-                sb.AppendFormat("<span class=\"title\">Hostname: {0}</span>", ScanNetworkListHosts[i].hostname);
-                sb.AppendFormat("<p>");
+                sb.AppendFormat("<span class=\"title title-collection-scannetwork\">Hostname: {0}</span>", ScanNetworkListHosts[i].hostname);
+                sb.AppendFormat("<p class=\"p-collection-scannetwork\">");
                 sb.AppendFormat("IP Address: {0}", ScanNetworkListHosts[i].ip);
                 sb.AppendFormat("<br>");
                 sb.AppendFormat("MAC Address: {0}", ScanNetworkListHosts[i].mac);

@@ -30,6 +30,11 @@ namespace BS
             {
                 try
                 {
+                    if (!System.IO.Directory.Exists(@"C:\pingmynetwork\"))
+                    {
+                        System.IO.Directory.CreateDirectory(@"C:\pingmynetwork\");
+                    }                 
+
                     fs = new FileStream(ficNombre, FileMode.Create, FileAccess.Write);
                     fs.Close();
                 }

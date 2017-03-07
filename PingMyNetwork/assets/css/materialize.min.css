@@ -2586,7 +2586,7 @@ ul.staggered-list li {
 
 @media only screen and (max-width: 992px) {
     .hide-on-med-and-down {
-        display: none !important
+        display: initial !important
     }
 }
 
@@ -3952,7 +3952,7 @@ nav .brand-logo {
     position: absolute;
     color: #fff;
     display: inline-block;
-    font-size: 5.1rem;
+    font-size: 2.1rem;
     padding: 0;
     white-space: nowrap;
     top: 25px;
@@ -4096,7 +4096,7 @@ nav .input-field {
     }
 
     nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-        height: 120px;
+        height: 68px;
         line-height: 64px
     }
 

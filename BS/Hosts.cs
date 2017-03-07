@@ -137,7 +137,7 @@ namespace BS
         /// <returns>returns a list with online hosts</returns>
         public List<host> FillListWithHost()
         {
-
+            listHostToScanNetwork.Clear();
             NetworkScan a = new NetworkScan();
             string myIP = a.GetIPAddress();
             string[] l = myIP.Split('.');
@@ -152,7 +152,7 @@ namespace BS
                     string h = a.CheckHostname(myIP + i);
                     if (h == "")
                     {
-                        h = "CANT GET HOSTNAME";
+                        h = "Hostname";
                     }
 
                     //GET MAC
