@@ -42,15 +42,15 @@
             <div class="modal-content" style="padding-bottom: 10px; padding-top: 40px;">
                 <h4 style="text-align: center;">Add new host</h4>
                 <br />
-                <div class="row" style="width: 50%; margin-right: auto; margin-left: 25% !important; margin-top: -4.5%;">
+                <div class="row rowstyle">
 
                     <%-- INPUTS --%>
                     <div class="row" style="text-align: center;">
 
                         <%-- SELECT DEVICE --%>
-                        <div style="width: 102%; z-index: 99999" class="input-field col s12 tooltipped" data-position="left" data-delay="50" data-tooltip="Select host device">
+                        <div class="input-field col s12 tooltipped selectdevices" data-position="left" data-delay="50" data-tooltip="Select host device">
                             <select runat="server" id="select_device" class="icons" style="vertical-align: top;">
-                                <option value="" >Select device</option>
+                                <option value="">Select device</option>
                                 <option value="Desktop" data-icon="assets/images/default/form/logos/pc.png">Desktop PC</option>
                                 <option value="Server" data-icon="assets/images/default/form/logos/mac.png">Server</option>
                                 <option value="Smartphone" data-icon="assets/images/default/form/logos/android.png">Smartphone</option>
@@ -133,7 +133,7 @@
                             <asp:LinkButton runat="server" CssClass="btn waves-effect waves-light btnFormMarginTop btnForm " ID="linkbtnGetMACByIP" OnClick="btnGetMACByIP_Click" Text="GET BY IP"></asp:LinkButton>
                         </div>
 
-                        <div style="text-align: center">
+                        <div class="btnbottom" style="text-align: center">
 
                             <asp:LinkButton runat="server" CssClass="btn waves-effect waves-light btnTestIp clearform orange" ID="linkbtn_ClearTextBoxNewHost" OnClick="btn_ClearTextBoxNewHost_Click" Text="CLEAR FORM"></asp:LinkButton>
 
@@ -165,7 +165,7 @@
                     </asp:UpdatePanel>
                 </div>
 
-                <div style="text-align: center;">
+                <div class="btnbottom" style="text-align: center;">
                     <asp:LinkButton runat="server" CssClass="btn waves-effect waves-light btnTestIp green" ID="linkbtn_ScanNetwork" OnClick="btn_ScanNetwork_Click" Text="SCAN NETWORK"></asp:LinkButton>
                     <asp:LinkButton runat="server" CssClass="btn waves-effect waves-light btnTestIp orange" ID="linkbtn_ClearScan" OnClick="btn_ClearScan_Click" Text="CLEAR TABLE"></asp:LinkButton>
                 </div>
@@ -204,7 +204,7 @@
                             <asp:AsyncPostBackTrigger ControlID="deletehost" />
                         </Triggers>
                     </asp:UpdatePanel>
-                    <div class="input-field col s12 m6" style="text-align: center;">
+                    <div class="input-field col s12 m6 btnbottom" style="text-align: center;">
 
                         <asp:LinkButton runat="server" CssClass="btn waves-effect waves-light btnTestIp orange" ID="refreshselect" OnClick="refreshselect_Click" Text="REFRESH SELECT"></asp:LinkButton>
                         <asp:LinkButton runat="server" CssClass="btn waves-effect waves-light btnTestIp modal-close red" ID="deletehost" OnClick="deletehost_Click" Text="DELETE HOST"></asp:LinkButton>

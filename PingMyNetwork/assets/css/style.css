@@ -1,5 +1,4 @@
-﻿
-.btnTestIp {
+﻿.btnTestIp {
     margin-top: 10px;
     padding-right: 20px !important;
     padding-left: 20px !important;
@@ -26,6 +25,8 @@
     width: 45% !important;
     float: left !important;
     margin-left: 30px !important;
+    min-height: 115px;
+    padding-top: 15px;
 }
 
 .collectionnetworkscan {
@@ -37,6 +38,21 @@
     margin-left: 10%;
 }
 
+nav .brand-logo {
+    top: 0px;
+}
+
+.rowstyle {
+    width: 50%;
+    margin-right: auto;
+    margin-left: 25% !important;
+    margin-top: -4.5%;
+}
+
+.selectdevices {
+    width: 102%;
+    z-index: 99999
+}
 
 .btn {
     background-color: #42a5f5;
@@ -45,3 +61,116 @@
     .btn:hover {
         background-color: #1565c0;
     }
+
+
+
+
+
+
+
+@media only screen and (max-device-width:750px) {
+    .collection .collection-item.avatar {
+        width: 90% !important;
+        float: left !important;
+        margin-left: 30px !important;
+        min-height: 150px;
+        padding-top: 20px;
+    }
+
+    #mainHostList ul li i {
+        margin-top: 10px;
+        color: white;
+        margin-bottom: 5px;
+        width: 80px;
+        height: 80px;
+    }
+
+    .collection .collection-item.avatar i.circle {
+        font-size: 44px;
+        line-height: 79px;
+        color: #fff;
+        background-color: #999;
+        text-align: center;
+    }
+
+    .collection .collection-item.avatar .title {
+        font-size: 16px;
+        font-size: 36px;
+        margin-left: 35px;
+    }
+
+    .collection .collection-item.avatar p {
+        margin: 0;
+        margin-left: 35px;
+        font-size: 30px;
+        line-height: 40px;
+        margin-top: 5px;
+    }
+
+    /* NAV HEADER*/
+
+    nav .brand-logo {
+        position: absolute;
+        color: #fff;
+        display: inline-block;
+        font-size: 5.1rem;
+        padding: 0;
+        white-space: nowrap;
+        top: 30px;
+    }
+
+    nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+        height: 130px;
+        line-height: 64px;
+    }
+}
+
+
+
+
+@media only screen and (max-width:750px) {
+    .collection .collection-item.avatar {
+        width: 90% !important;
+        float: left !important;
+        margin-left: 30px !important;
+        min-height: 95px;
+        padding-top: 10px;
+    }
+
+    .modal .modal-content {
+        padding: 24px;
+        padding-bottom: 10px;
+        padding-top: 30px;
+    }
+
+    .modal h4 {
+        margin-top: -10px;
+    }
+
+    .row {
+        width: 100% !important;
+        margin-right: auto !important;
+        margin-left: 0px !important;
+    }
+
+    .modal {
+        max-height: 75%
+    }
+
+    .clearform {
+        margin-left: 7%;
+    }
+
+    .btnbottom {
+        margin-bottom: 10px;
+    }
+
+    .selectdevices {
+        width: 102%;
+        z-index: 99999;
+        margin-top: 0;
+    }
+    .hide-on-med-and-down {
+         display: initial !important;
+    }
+}
