@@ -412,7 +412,7 @@ namespace PingMyNetwork
         /// <param name="e"></param>
         protected void btn_ScanNetwork_Click(object sender, EventArgs e)
         {
-            CheckNetworkContainer.InnerHtml = "";
+            //CheckNetworkContainer.InnerHtml = "";
             StringBuilder sb = new StringBuilder();
             sb.Append("<ul id=\"ulScannetwork\" class=\"collection\">");
 
@@ -432,6 +432,7 @@ namespace PingMyNetwork
             }
             sb.Append("</ul>");
             CheckNetworkContainer.InnerHtml = sb.ToString();
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "ReloadScanHostList", "$( '#ulScannetwork' ).load( 'default.aspx #ulScannetwork' );", true);
             ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Network scan finished!', 4000)});", true);
 
         }

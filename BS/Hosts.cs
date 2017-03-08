@@ -9,7 +9,7 @@ namespace BS
 {
     public class Hosts
     {
-        Fichero fichero_hosts;
+        File fichero_hosts;
         List<string> l1;
         List<tipo> l2;
         List<string> nhosts;
@@ -55,7 +55,7 @@ namespace BS
 
             try
             {
-                fichero_hosts = new Fichero(@"C:\pingmynetwork\hosts.txt", l1, l2);
+                fichero_hosts = new File(@"C:\pingmynetwork\hosts.txt", l1, l2);
             }
             catch (Exception e1)
             {
@@ -64,9 +64,9 @@ namespace BS
             //Guardando los datos
             try
             {
-                if (fichero_hosts.abre())
+                if (fichero_hosts.openFile())
                 {
-                    fichero_hosts.fin();
+                    fichero_hosts.endFile();
                     nhosts.Add(ip);
                     nhosts.Add(hostname);
                     nhosts.Add(mac);
@@ -82,21 +82,24 @@ namespace BS
             }
             finally
             {
-                fichero_hosts.cierra();
+                fichero_hosts.closeFile();
             }
 
         }
 
-
+        /// <summary>
+        /// Method that fills a list with the entire network connected hosts
+        /// </summary>
+        /// <returns>Host list</returns>
         public List<host> GetHostFromDataBase()
         {
             listHostMain = new List<host>();
             List<string> hosts = new List<string>();
             SetListas();
-            fichero_hosts = new Fichero(@"C:\pingmynetwork\hosts.txt", l1, l2);
-            fichero_hosts.abre();
+            fichero_hosts = new File(@"C:\pingmynetwork\hosts.txt", l1, l2);
+            fichero_hosts.openFile();
 
-            for (int i = 0; i < fichero_hosts.numRegistros; i++)
+            for (int i = 0; i < fichero_hosts.registercounter; i++)
             {
                 try
                 {
@@ -123,7 +126,7 @@ namespace BS
             }
 
 
-            fichero_hosts.cierra();
+            fichero_hosts.closeFile();
 
 
             return listHostMain;
@@ -143,7 +146,7 @@ namespace BS
             string[] l = myIP.Split('.');
             myIP = string.Format("{0}.{1}.{2}.", l[0], l[1], l[2]);
 
-            for (int i = 1; i < 20; i++)
+            for (int i = 1; i < 30; i++)
             {
                 //CHECK IF IP IS PINGEABLE
                 if (a.PingNetwork(myIP + i))
@@ -174,6 +177,9 @@ namespace BS
 
         }
 
+        /// <summary>
+        /// Filestream stuff
+        /// </summary>
         private void SetListas()
         {
 
@@ -220,12 +226,12 @@ namespace BS
 
             try
             {
-                if (File.Exists(@"C:\pingmynetwork\hosts.txt"))
+                if (System.IO.File.Exists(@"C:\pingmynetwork\hosts.txt"))
                 {
-                    File.Delete(@"C:\pingmynetwork\hosts.txt");
+                    System.IO.File.Delete(@"C:\pingmynetwork\hosts.txt");
 
                 }
-                fichero_hosts = new Fichero(@"C:\pingmynetwork\hosts.txt", l1, l2);
+                fichero_hosts = new File(@"C:\pingmynetwork\hosts.txt", l1, l2);
             }
             catch (Exception e1)
             {
@@ -234,9 +240,9 @@ namespace BS
             //Guardando los datos
             try
             {
-                if (fichero_hosts.abre())
+                if (fichero_hosts.openFile())
                 {
-                    fichero_hosts.fin();
+                    fichero_hosts.endFile();
 
                     foreach (host host in newListHost)
                     {
@@ -256,7 +262,7 @@ namespace BS
             }
             finally
             {
-                fichero_hosts.cierra();
+                fichero_hosts.closeFile();
             }
         }
     }

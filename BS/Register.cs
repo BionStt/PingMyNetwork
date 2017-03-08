@@ -13,46 +13,46 @@ namespace BS
         entero = 2
     }
 
-     public class Registro
+     public class Register
     {
-        List<string> campos;
-        List<tipo> tipos;
-        int numCampos;
+        List<string> fields;
+        List<tipo> types;
+        int fieldCounter;
 
-        public Registro(List<string> lista1, List<tipo> lista2)
+        public Register(List<string> lista1, List<tipo> lista2)
         {
             int i = 0;
-            campos = new List<string>();
-            tipos = new List<tipo>();
+            fields = new List<string>();
+            types = new List<tipo>();
             //for (i = 0; i < lista1.Count; i++)
             //{
-            campos.InsertRange(0, lista1);
-            tipos.InsertRange(0, lista2);
+            fields.InsertRange(0, lista1);
+            types.InsertRange(0, lista2);
 
             //}
-            numCampos = lista1.Count;
+            fieldCounter = lista1.Count;
 
         }
 
-        public void escribe(List<string> listavalores, BinaryWriter bw)
+        public void write(List<string> valuelist, BinaryWriter bw)
         {
             int entero = 0;
 
             try
             {
-                for (int i = 0; i < listavalores.Count; i++)
+                for (int i = 0; i < valuelist.Count; i++)
                 {
-                    switch (tipos[i])
+                    switch (types[i])
                     {
                         case tipo.cadena:
-                            bw.Write(listavalores[i].ToString());
+                            bw.Write(valuelist[i].ToString());
                             break;
                         case tipo.entero:
-                            Int32.TryParse(listavalores[i], out entero);
+                            Int32.TryParse(valuelist[i], out entero);
                             bw.Write(entero);
                             break;
                         default:
-                            throw new Exception("Tipo de dato no permitido");
+                            throw new Exception("");
                     }
                 }
             }
@@ -63,15 +63,15 @@ namespace BS
         }
 
 
-        public List<string> lee(BinaryReader br)
+        public List<string> read(BinaryReader br)
         {
             List<string> devol;
             devol = new List<string>();
             try
             {
-                for (int i = 0; i < numCampos; i++)
+                for (int i = 0; i < fieldCounter; i++)
                 {
-                    switch (tipos[i])
+                    switch (types[i])
                     {
                         case tipo.cadena:
                             devol.Add(br.ReadString());
@@ -80,7 +80,7 @@ namespace BS
                             devol.Add(br.ReadInt32().ToString());
                             break;
                         default:
-                            throw new Exception("Tipo de dato no permitido");
+                            throw new Exception("");
                     }
                 }
             }

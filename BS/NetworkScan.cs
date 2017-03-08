@@ -10,7 +10,9 @@ namespace BS
 {
     public class NetworkScan
     {
-
+        /// <summary>
+        /// Empty constructor
+        /// </summary>
         public NetworkScan()
         {
         }

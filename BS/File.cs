@@ -7,35 +7,35 @@ using System.Threading.Tasks;
 
 namespace BS
 {
-    public class Fichero
+    public class File
     {
-        string ficNombre;
-        public int numRegistros;
+        string filename;
+        public int registercounter;
         FileStream fs;
         public BinaryReader br;
         public BinaryWriter bw;
-        List<string> campos;
-        List<tipo> tipos;
-        public Registro reg;
+        List<string> field;
+        List<tipo> type;
+        public Register reg;
         public List<string> devol;
 
-        public Fichero(string fnom, List<string> lista1, List<tipo> lista2)
+        public File(string fnom, List<string> lista1, List<tipo> lista2)
         {
-            ficNombre = fnom;
-            numRegistros = 0;
+            filename = fnom;
+            registercounter = 0;
             fs = null;
             br = null;
             bw = null;
-            if (!File.Exists(ficNombre))
+            if (!System.IO.File.Exists(filename))
             {
                 try
                 {
                     if (!System.IO.Directory.Exists(@"C:\pingmynetwork\"))
                     {
                         System.IO.Directory.CreateDirectory(@"C:\pingmynetwork\");
-                    }                 
+                    }
 
-                    fs = new FileStream(ficNombre, FileMode.Create, FileAccess.Write);
+                    fs = new FileStream(filename, FileMode.Create, FileAccess.Write);
                     fs.Close();
                 }
                 catch (Exception e1)
@@ -44,44 +44,44 @@ namespace BS
                 }
             }
 
-            campos = new List<string>();
-            tipos = new List<tipo>();
+            field = new List<string>();
+            type = new List<tipo>();
 
-            campos.InsertRange(0, lista1);
-            tipos.InsertRange(0, lista2);
+            field.InsertRange(0, lista1);
+            type.InsertRange(0, lista2);
 
 
 
             try
             {
-                reg = new Registro(lista1, lista2);
+                reg = new Register(lista1, lista2);
             }
             catch (Exception e1)
             {
                 throw new Exception(e1.Message);
             }
-            numRegistros = calculaRegistros();
+            registercounter = getRegisterCounter();
         }
 
-        int calculaRegistros()
+        int getRegisterCounter()
         {
             int cuenta = 0;
-            bool fin = false;
-            if (abre())
+            bool endFile = false;
+            if (openFile())
             {
                 do
                 {
                     try
                     {
-                        reg.lee(br);
+                        reg.read(br);
                         cuenta++;
                     }
                     catch (Exception)
                     {
-                        fin = true;
+                        endFile = true;
                     }
-                } while (fin == false);
-                cierra();
+                } while (endFile == false);
+                closeFile();
             }
             return (cuenta);
         }
@@ -90,8 +90,8 @@ namespace BS
         {
             try
             {
-                reg.escribe(listavalores, bw);
-                numRegistros++;
+                reg.write(listavalores, bw);
+                registercounter++;
             }
             catch (Exception e1)
             {
@@ -103,7 +103,7 @@ namespace BS
         {
             try
             {
-                devol = reg.lee(br);
+                devol = reg.read(br);
             }
             catch (Exception e1)
             {
@@ -114,20 +114,20 @@ namespace BS
 
         public void trunca()
         {
-            fs = new FileStream(ficNombre, FileMode.Truncate);
+            fs = new FileStream(filename, FileMode.Truncate);
             fs.Close();
-            numRegistros = 0;
+            registercounter = 0;
         }
 
-        public bool abre()
+        public bool openFile()
         {
             try
             {
-                fs = new FileStream(ficNombre, FileMode.Open, FileAccess.ReadWrite);
+                fs = new FileStream(filename, FileMode.Open, FileAccess.ReadWrite);
             }
             catch (Exception e1)
             {
-                cierra();
+                closeFile();
                 throw new Exception(e1.Message + "\n" + e1.Source);
             }
             try
@@ -136,7 +136,7 @@ namespace BS
             }
             catch (Exception e1)
             {
-                cierra();
+                closeFile();
                 throw new Exception(e1.Message + "\n" + e1.Source);
             }
             try
@@ -145,13 +145,13 @@ namespace BS
             }
             catch (Exception e1)
             {
-                cierra();
+                closeFile();
                 throw new Exception(e1.Message + "\n" + e1.Source);
             }
             return (true);
         }
 
-        public void cierra()
+        public void closeFile()
         {
             if (br != null)
                 br.Close();
@@ -164,12 +164,12 @@ namespace BS
             fs = null;
         }
 
-        public void inicio()
+        public void startFile()
         {
             fs.Seek(0, SeekOrigin.Begin);
         }
 
-        public void fin()
+        public void endFile()
         {
             fs.Seek(0, SeekOrigin.End);
         }
