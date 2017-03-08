@@ -63,6 +63,31 @@ nav .brand-logo {
     }
 
 
+@media only screen and (max-device-width:1024px) {
+
+    .collection .collection-item.avatar {
+        min-height: 115px;
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+
+    nav .brand-logo {
+        left: 15%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    nav .brand-logo {
+        left: 20%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+}
 
 
 @media only screen and (max-device-width:750px) {
@@ -248,9 +273,7 @@ nav .brand-logo {
 
     .title-collection-scannetwork {
         margin-left: 36px !important;
-        font-size:15px !important;
-        
-        
+        font-size: 15px !important;
     }
 
     .p-collection-scannetwork {
@@ -263,8 +286,6 @@ nav .brand-logo {
         height: 80px !important;
         /*margin-top:36px !important;*/
     }
-
-
 }
 
 
