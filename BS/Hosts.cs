@@ -40,8 +40,10 @@ namespace BS
         /// <param name="ip">IP</param>
         /// <param name="hostname">Hostname</param>
         /// <param name="mac">MAC</param>
-        public void AddHost(string ip, string hostname, string mac, string device)
+        public bool AddHost(string ip, string hostname, string mac, string device)
         {
+
+            bool res = false; 
 
             SetListas();
 
@@ -59,32 +61,50 @@ namespace BS
             }
             catch (Exception e1)
             {
-                return;
+
             }
             //Guardando los datos
-            try
+            if (!listHostMain.Contains(newhost))
             {
-                if (fichero_hosts.openFile())
+                foreach (host h in listHostMain)
                 {
-                    fichero_hosts.endFile();
-                    nhosts.Add(ip);
-                    nhosts.Add(hostname);
-                    nhosts.Add(mac);
-                    nhosts.Add(device);
-                    fichero_hosts.escribe(nhosts);
-                    listHostMain.Add(newhost);
+                    if (h.ip == newhost.ip)
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    if (fichero_hosts.openFile())
+                    {
+                        fichero_hosts.endFile();
+                        nhosts.Add(ip);
+                        nhosts.Add(hostname);
+                        nhosts.Add(mac);
+                        nhosts.Add(device);
+                        fichero_hosts.escribe(nhosts);
+                        listHostMain.Add(newhost);
+                        return true;
+
+                    }
+                }
+                catch (Exception e1)
+                {
+                    //MessageBox.Show(e1.Message);
+                    return false;
+
+                }
+                finally
+                {
+                    fichero_hosts.closeFile();
+
 
                 }
             }
-            catch (Exception e1)
-            {
-                //MessageBox.Show(e1.Message);
-            }
-            finally
-            {
-                fichero_hosts.closeFile();
-            }
-
+            return res;
         }
 
         /// <summary>

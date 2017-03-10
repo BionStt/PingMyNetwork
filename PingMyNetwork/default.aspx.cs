@@ -13,13 +13,13 @@ namespace PingMyNetwork
     {
         List<Hosts.host> ScanNetworkListHosts = new List<Hosts.host>();
         List<Hosts.host> MainListHosts = new List<Hosts.host>();
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             dropdown_hostscannetwork.Visible = false;
             if (!IsPostBack)
             {
-                
+
 
             }
 
@@ -31,7 +31,7 @@ namespace PingMyNetwork
                 GenerateMainHostList();
             }
         }
-        
+
         #region VARIABLE VALUES 
 
 
@@ -311,8 +311,15 @@ namespace PingMyNetwork
                 {
                     //Response.Redirect(Request.RawUrl);
                     /// Add a host with textbox parameters
-                    new Hosts().AddHost(txtBox_ipaddress.Text, txtBox_hostname.Text, txtBox_macaddress.Text, select_device.Value.ToLower());
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Host added successfully!', 2000)});", true);
+                    if (new Hosts().AddHost(txtBox_ipaddress.Text, txtBox_hostname.Text, txtBox_macaddress.Text, select_device.Value.ToLower()))
+                    {
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Host added successfully!', 2000)});", true);
+
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Host already exist!', 2000)});", true);
+                    }
 
                 }
                 else
@@ -322,7 +329,6 @@ namespace PingMyNetwork
                 }
                 GenerateMainHostList();
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "ReloadHostList", "$( '#mainHostList' ).load( 'default.aspx #mainHostList' );", true);
-
             }
             else
             {
@@ -418,20 +424,20 @@ namespace PingMyNetwork
 
             ScanNetworkListHosts = new Hosts().FillListWithHost();
 
-            for ( int i = 0; i < ScanNetworkListHosts.Count; i++)
+            for (int i = 0; i < ScanNetworkListHosts.Count; i++)
             {
                 sb.AppendFormat("<li class=\"collection-item avatar colletion-scannetwork\" style=\"width: 100% !important;float: none !important;margin-left: 0px !important;\">");
-                sb.AppendFormat("<i style=\"margin-top: 10px;\" style=\" color: white\" class=\"material-icons circle green\">devices_other</i>");
+                sb.AppendFormat("<i style=\" margin-top: 10px;color: white\" class=\"material-icons circle green\">devices_other</i>");
                 sb.AppendFormat("<span class=\"title title-collection-scannetwork\">Hostname: {0}</span>", ScanNetworkListHosts[i].hostname);
                 sb.AppendFormat("<p class=\"p-collection-scannetwork\">");
                 sb.AppendFormat("IP Address: {0}", ScanNetworkListHosts[i].ip);
                 sb.AppendFormat("<br>");
                 sb.AppendFormat("MAC Address: {0}", ScanNetworkListHosts[i].mac);
-                sb.AppendFormat("<p>");
+                sb.AppendFormat("</p>");
                 sb.AppendFormat("</li>");
             }
             sb.Append("</ul>");
-            CheckNetworkContainer.InnerHtml = sb.ToString();
+            CheckNetworkContainer.Text = sb.ToString();
             ScriptManager.RegisterStartupScript(this, typeof(Page), "ReloadScanHostList", "$( '#ulScannetwork' ).load( 'default.aspx #ulScannetwork' );", true);
             ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Network scan finished!', 4000)});", true);
 
@@ -462,7 +468,7 @@ namespace PingMyNetwork
             sb.AppendFormat("<p>");
             sb.AppendFormat("</li>");
             sb.Append("</ul>");
-            CheckNetworkContainer.InnerHtml = sb.ToString();
+            CheckNetworkContainer.Text = sb.ToString();
         }
 
         /// <summary>
@@ -472,7 +478,7 @@ namespace PingMyNetwork
         /// <param name="e"></param>
         protected void btn_ClearScan_Click(object sender, EventArgs e)
         {
-            CheckNetworkContainer.InnerHtml = "";
+            CheckNetworkContainer.Text = "";
             ScanNetworkListHosts.Clear();
         }
 
@@ -506,10 +512,19 @@ namespace PingMyNetwork
 
         protected void deletehost_Click(object sender, EventArgs e)
         {
-            new Hosts().DeleteHost(dropdown_hostscannetwork.SelectedValue);
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Host successfully deleted!', 2000)});", true);
-            GenerateMainHostList();
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "ReloadHostList", "$( '#mainHostList' ).load( 'default.aspx #mainHostList' );", true);
+            if (dropdown_hostscannetwork.Visible == true)
+            {
+                new Hosts().DeleteHost(dropdown_hostscannetwork.SelectedValue);
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Host successfully deleted!', 2000)});", true);
+                GenerateMainHostList();
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "ReloadHostList", "$( '#mainHostList' ).load( 'default.aspx #mainHostList' );", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Refresh first!', 2000)});", true);
+
+            }
+
 
         }
         #endregion

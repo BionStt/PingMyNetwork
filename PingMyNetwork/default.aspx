@@ -143,7 +143,6 @@
                 </div>
             </div>
         </div>
-
         <!-- MODAL - CHECK NETWORK -->
         <div id="modalCheckNetwork" class="modal modal-form">
             <div class="modal-content">
@@ -151,12 +150,13 @@
                 <br />
                 <p style="margin-top: -10px; padding-left: 10%; padding-right: 10%;">
                     This tool checks the entire network for online devices, this process can take up to 3 minutes. It is important to not reload the page since it will cancel the scan. A dialog will show when the scan is finished.
+               
                 </p>
 
                 <div class="container">
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
-                            <div runat="server" id="CheckNetworkContainer"></div>
+                            <asp:Label runat="server" ID="CheckNetworkContainer"></asp:Label>
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="linkbtn_ScanNetwork" />
@@ -179,6 +179,7 @@
                 <br />
                 <p style="margin-top: -10px; padding-left: 10%; padding-right: 10%;">
                     This tool checks the entire network for online devices, this process can take up to 3 minutes. It is important to not reload the page since it will cancel the scan. A dialog will show when the scan is finished.
+               
                 </p>
 
                 <div class="container">
@@ -242,7 +243,7 @@
             $('#moalFormNewNodo').modal();
         });
 
-        
+
     </script>
 
 
