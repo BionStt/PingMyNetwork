@@ -178,8 +178,7 @@
                 <h4 style="text-align: center">Delete host</h4>
                 <br />
                 <p style="margin-top: -10px; padding-left: 10%; padding-right: 10%;">
-                    This tool checks the entire network for online devices, this process can take up to 3 minutes. It is important to not reload the page since it will cancel the scan. A dialog will show when the scan is finished.
-               
+                    Refresh to update the dropdown to be able to delete the selected host.               
                 </p>
 
                 <div class="container">
