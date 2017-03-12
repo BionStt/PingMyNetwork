@@ -512,7 +512,7 @@ namespace PingMyNetwork
 
         protected void deletehost_Click(object sender, EventArgs e)
         {
-            if (dropdown_hostscannetwork.Visible == true)
+            if (dropdown_hostscannetwork.Text != "")
             {
                 new Hosts().DeleteHost(dropdown_hostscannetwork.SelectedValue);
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "UpdateMsg", "$(document).ready(function(){Materialize.toast('Host successfully deleted!', 2000)});", true);

@@ -74,7 +74,7 @@ namespace BS
                     }
                 }
             }
-            else
+            if (!listHostMain.Contains(newhost))
             {
                 try
                 {
