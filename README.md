@@ -1,4 +1,4 @@
-<h1>PingMyNetwork</h1>
+# PingMyNetwork [![Build Status](https://travis-ci.org/emimontesdeoca/PingMyNetwork.svg?branch=master)](https://travis-ci.org/emimontesdeoca/PingMyNetwork)
 
 ## Introduction
 
